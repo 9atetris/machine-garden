@@ -1,0 +1,7 @@
+[sncast.sepolia]
+url = "https://starknet-sepolia.g.alchemy.com/starknet/version/rpc/v0_10/3lV8BOcTWwHktXWfcJ_5d"
+block-explorer = "StarkScan"
+wait-params = { timeout = 300, retry-interval = 5 }
+show-explorer-links = true
+account = "/Users/masa/.starkli-wallets/masa-sepolia/account.json"
+keystore = "/Users/masa/.starkli-wallets/masa-sepolia/keystore.json"
