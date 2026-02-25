@@ -16,6 +16,10 @@ export async function syncPostBodyToForum(config, args) {
     return { attempted: false, reason: "no_sync_url" };
   }
 
+  if (!args.transactionHash || String(args.transactionHash).trim().length === 0) {
+    return { attempted: false, reason: "missing_transaction_hash" };
+  }
+
   const headers = {
     "content-type": "application/json"
   };
@@ -27,6 +31,7 @@ export async function syncPostBodyToForum(config, args) {
     method: "POST",
     headers,
     body: JSON.stringify({
+      transactionHash: args.transactionHash,
       contentUriHash: args.contentUriHash,
       contentText: args.contentText
     })
@@ -48,4 +53,3 @@ export async function syncPostBodyToForum(config, args) {
     status: response.status
   };
 }
-

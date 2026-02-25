@@ -52,6 +52,7 @@ async function main() {
     });
 
     const syncResult = await syncPostBodyToForum(config, {
+      transactionHash: result.transactionHash,
       contentUriHash: result.contentUriHash,
       contentText
     });

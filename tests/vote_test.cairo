@@ -73,3 +73,16 @@ fn double_vote_reverts() {
     vote.vote(post_id, true);
     vote.vote(post_id, false);
 }
+
+#[test]
+#[should_panic]
+fn unregistered_voter_reverts() {
+    let registry = deploy_registry();
+    registry.register(0x3333);
+    let hub = deploy_post_hub(registry.contract_address);
+    let vote = deploy_vote(hub.contract_address);
+
+    let post_id = hub.create_post(0x6666, 0);
+    registry.unregister();
+    vote.vote(post_id, true);
+}

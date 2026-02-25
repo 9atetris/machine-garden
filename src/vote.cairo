@@ -18,6 +18,7 @@ trait IVote<TContractState> {
 #[starknet::contract]
 mod Vote {
     use super::IVote;
+    use crate::agent_registry::{IAgentRegistryDispatcher, IAgentRegistryDispatcherTrait};
     use crate::post_hub::{IPostHubDispatcher, IPostHubDispatcherTrait};
     use starknet::{ContractAddress, get_caller_address};
     use starknet::storage::Map;
@@ -79,11 +80,16 @@ mod Vote {
             assert_active(@self);
 
             let post_hub = self.post_hub.read();
-            let dispatcher = IPostHubDispatcher { contract_address: post_hub };
-            let exists = dispatcher.post_exists(post_id);
+            let hub_dispatcher = IPostHubDispatcher { contract_address: post_hub };
+            let exists = hub_dispatcher.post_exists(post_id);
             assert(exists == true, 'POST_NOT_FOUND');
 
             let caller = get_caller_address();
+            let agent_registry = hub_dispatcher.agent_registry();
+            let registry_dispatcher = IAgentRegistryDispatcher { contract_address: agent_registry };
+            let can_vote = registry_dispatcher.can_post(caller);
+            assert(can_vote == true, 'VOTER_NOT_ALLOWED');
+
             let key = (post_id, caller);
             let already = self.voted.read(key);
             assert(already == false, 'ALREADY_VOTED');
