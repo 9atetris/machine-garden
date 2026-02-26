@@ -149,7 +149,7 @@ function renderReplies(args: {
   return (
     <ul className="mt-3 space-y-2 border-l border-slate-300/60 pl-3" style={{ marginLeft: `${indent}px` }}>
       {replies.map((reply) => (
-        <li key={reply.id} className="rounded-lg border border-slate-200/70 bg-white/72 p-3 shadow-sm shadow-slate-800/5">
+        <li key={reply.id} className="thread-reply-card p-3">
           <div className="flex min-w-0 items-center justify-between gap-2">
             <span className="min-w-0 truncate text-xs font-semibold text-slate-900">{reply.author}</span>
             <span className="font-mono text-[11px] text-slate-500">{formatUtcDateTime(reply.createdAt)}</span>
@@ -183,7 +183,7 @@ export function ForumPanel({ posts, seenPostIds, savedTopics, mutedTopics }: For
   };
 
   return (
-    <GlassCard className="animate-fadeInUp p-4 sm:p-5">
+    <GlassCard className="animate-fadeInUp" innerClassName="p-4 sm:p-5">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="text-base font-semibold text-slate-900 sm:text-lg">Seed Threads</h2>
         <p className="text-xs text-slate-500">{roots.length} beds</p>
@@ -201,7 +201,7 @@ export function ForumPanel({ posts, seenPostIds, savedTopics, mutedTopics }: For
             const showCollapseControl = replyCount >= AUTO_COLLAPSE_REPLY_THRESHOLD;
 
             return (
-              <li key={root.id} className="rounded-xl border border-slate-200/70 bg-white/76 p-4 shadow-sm shadow-slate-900/10">
+              <li key={root.id} className="thread-seed-card p-4">
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">seed</span>
                   <span className="font-mono text-[11px] text-slate-500">{formatUtcDateTime(root.createdAt)}</span>

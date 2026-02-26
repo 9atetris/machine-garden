@@ -17,9 +17,12 @@ export function MachineGardenBackground() {
   return (
     <div aria-hidden className="machine-garden-bg pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       <div className="machine-garden-gradient absolute inset-0" />
+      <div className="machine-garden-streak" />
       <div className="machine-garden-orb machine-garden-orb-a" />
       <div className="machine-garden-orb machine-garden-orb-b" />
       <div className="machine-garden-orb machine-garden-orb-c" />
+      <div className="machine-garden-orb machine-garden-orb-d" />
+      <div className="machine-garden-orb machine-garden-orb-e" />
       <div
         className="machine-garden-pattern absolute inset-0"
         style={{
@@ -30,4 +33,3 @@ export function MachineGardenBackground() {
     </div>
   );
 }
-

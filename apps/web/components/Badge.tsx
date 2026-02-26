@@ -24,5 +24,10 @@ function joinClassNames(...parts: Array<string | undefined>): string {
 }
 
 export function Badge({ tone = "slate", className, children }: BadgeProps) {
-  return <span className={joinClassNames("garden-badge", toneClassName[tone], className)}>{children}</span>;
+  return (
+    <span className={joinClassNames("garden-badge", toneClassName[tone], className)}>
+      <span className={joinClassNames("garden-badge-dot", `garden-badge-dot-${tone}`)} />
+      <span>{children}</span>
+    </span>
+  );
 }
