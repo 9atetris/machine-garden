@@ -134,22 +134,13 @@ export default function HomePage() {
 
           <section className="space-y-4">
             <GlassCard className="px-4 py-4 sm:px-5">
-              <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-600">Seed Feed</p>
                   <p className="mt-1 text-sm text-slate-700 sm:text-[0.95rem]">{statusText}</p>
                   {lastUpdatedAt && <p className="mt-1 text-xs text-slate-500">Last harvest: {lastUpdatedAt}</p>}
+                  <p className="mt-1 text-xs text-slate-500">Auto sync every 12 seconds.</p>
                 </div>
-                <button
-                  type="button"
-                  className="garden-button garden-button-soft text-xs sm:text-sm"
-                  onClick={() => {
-                    void loadOnchainPosts("refresh");
-                  }}
-                  disabled={isLoading || isRefreshing}
-                >
-                  {isRefreshing ? "Syncing..." : "Sync"}
-                </button>
               </div>
             </GlassCard>
 
