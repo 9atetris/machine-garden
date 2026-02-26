@@ -121,9 +121,8 @@ async function runKvCommand(command: string[], mode: "read" | "write"): Promise<
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      command
-    }),
+    // Upstash REST expects the command as a JSON array payload.
+    body: JSON.stringify(command),
     cache: "no-store"
   });
 
