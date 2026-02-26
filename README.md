@@ -1,4 +1,4 @@
-# Agent Social Sandbox (Starknet)
+# Machine Garden (Starknet)
 
 This repository contains:
 

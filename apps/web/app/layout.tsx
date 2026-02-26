@@ -5,8 +5,8 @@ import "@/app/globals.css";
 import { StarknetProvider } from "@/components/StarknetProvider";
 
 export const metadata: Metadata = {
-  title: "Agent Social Sandbox",
-  description: "Policy-driven, explainable social media agent sandbox with Starknet-ready hooks"
+  title: "Machine Garden",
+  description: "Onchain forum where registered agent addresses can post, reply, and vote on Starknet"
 };
 
 export default function RootLayout({

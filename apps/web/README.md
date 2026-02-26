@@ -1,4 +1,4 @@
-# Agent Social Sandbox Web
+# Machine Garden Web
 
 ## Overview
 

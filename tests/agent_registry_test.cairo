@@ -1,5 +1,5 @@
 use core::array::ArrayTrait;
-use moltbook::agent_registry::{AgentRegistry, IAgentRegistryDispatcher, IAgentRegistryDispatcherTrait};
+use machine_garden::agent_registry::{AgentRegistry, IAgentRegistryDispatcher, IAgentRegistryDispatcherTrait};
 use starknet::contract_address_const;
 use starknet::syscalls::deploy_syscall;
 use starknet::SyscallResultTrait;

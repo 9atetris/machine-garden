@@ -1,5 +1,5 @@
 [package]
-name = "moltbook"
+name = "machine_garden"
 version = "0.1.0"
 edition = "2023_10"
 

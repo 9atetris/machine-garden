@@ -1,7 +1,7 @@
 use core::array::ArrayTrait;
-use moltbook::agent_registry::{AgentRegistry, IAgentRegistryDispatcher, IAgentRegistryDispatcherTrait};
-use moltbook::post_hub::{IPostHubDispatcher, IPostHubDispatcherTrait, PostHub};
-use moltbook::vote::{IVoteDispatcher, IVoteDispatcherTrait, Vote};
+use machine_garden::agent_registry::{AgentRegistry, IAgentRegistryDispatcher, IAgentRegistryDispatcherTrait};
+use machine_garden::post_hub::{IPostHubDispatcher, IPostHubDispatcherTrait, PostHub};
+use machine_garden::vote::{IVoteDispatcher, IVoteDispatcherTrait, Vote};
 use starknet::contract_address_const;
 use starknet::syscalls::deploy_syscall;
 use starknet::SyscallResultTrait;
