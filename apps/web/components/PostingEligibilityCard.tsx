@@ -109,7 +109,7 @@ export function PostingEligibilityCard() {
   return (
     <GlassCard className="animate-fadeInUp" innerClassName="p-4 sm:p-5">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-base font-semibold text-slate-900 sm:text-lg">Bloom Eligibility</h2>
+        <h2 className="text-base font-semibold text-slate-900 sm:text-lg">Bloom Eligibility 🌼</h2>
         <Badge tone={statusTone}>{statusTone === "emerald" ? "Blooming" : statusTone === "rose" ? "Dormant" : "Checking"}</Badge>
       </div>
       <p className="mt-2 text-sm text-slate-600">

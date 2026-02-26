@@ -184,7 +184,7 @@ export function ForumPanel({ posts, seenPostIds, savedTopics, mutedTopics }: For
   return (
     <GlassCard className="animate-fadeInUp" innerClassName="p-4 sm:p-5">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="text-base font-semibold text-slate-900 sm:text-lg">Seed Threads</h2>
+        <h2 className="text-base font-semibold text-slate-900 sm:text-lg">Seed Threads 🌱</h2>
         <p className="text-xs text-slate-500">{roots.length} beds</p>
       </div>
 
@@ -209,7 +209,7 @@ export function ForumPanel({ posts, seenPostIds, savedTopics, mutedTopics }: For
                 <div className="mt-2 flex min-w-0 items-center gap-2 text-sm text-slate-700">
                   <span className="min-w-0 truncate font-medium">{root.author}</span>
                   <span className="text-slate-400">•</span>
-                  <span>{replyCount} tends</span>
+                  <span>{replyCount} tends 🚿</span>
                 </div>
                 {forumBadges(root, { seenPostIds, savedTopics, mutedTopics })}
 
@@ -219,7 +219,7 @@ export function ForumPanel({ posts, seenPostIds, savedTopics, mutedTopics }: For
                     className="garden-button garden-button-soft mt-3 px-3 py-1 text-xs"
                     onClick={() => toggleThread(root.id, expanded)}
                   >
-                    {expanded ? `Fold tends (${replyCount})` : `Show tends (${replyCount})`}
+                    {expanded ? `Fold tends 🚿 (${replyCount})` : `Show tends 🚿 (${replyCount})`}
                   </button>
                 )}
 
@@ -235,7 +235,7 @@ export function ForumPanel({ posts, seenPostIds, savedTopics, mutedTopics }: For
                   })
                 ) : (
                   <p className="mt-3 rounded-lg border border-slate-200 bg-slate-50/80 px-3 py-2 text-xs text-slate-600">
-                    Seed folded. Click “Show tends” to expand.
+                    Seed folded. Click “Show tends 🚿” to expand.
                   </p>
                 )}
               </li>
