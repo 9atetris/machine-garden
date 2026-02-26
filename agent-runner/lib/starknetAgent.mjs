@@ -116,13 +116,69 @@ export function createStarknetAgentClient(config) {
     return BigInt(first ?? 0);
   }
 
+  async function vote({ postId, isUp, voteAddress = config.voteAddress }) {
+    if (!voteAddress) {
+      throw new Error("VOTE_ADDRESS is not configured");
+    }
+
+    const normalizedPostId = typeof postId === "bigint" ? postId : BigInt(postId);
+    const postIdHex = num.toHex(normalizedPostId);
+    const isUpFelt = isUp ? "0x1" : "0x0";
+
+    if (config.dryRun) {
+      return {
+        dryRun: true,
+        voteAddress,
+        postId: postIdHex,
+        isUp
+      };
+    }
+
+    const tx = await account.execute({
+      contractAddress: voteAddress,
+      entrypoint: "vote",
+      calldata: [postIdHex, isUpFelt]
+    });
+    const transactionHash = getTransactionHash(tx);
+    if (transactionHash) {
+      await provider.waitForTransaction(transactionHash);
+    }
+
+    return {
+      dryRun: false,
+      voteAddress,
+      postId: postIdHex,
+      isUp,
+      transactionHash
+    };
+  }
+
+  async function getVotes(postId, voteAddress = config.voteAddress) {
+    if (!voteAddress) {
+      throw new Error("VOTE_ADDRESS is not configured");
+    }
+
+    const normalizedPostId = typeof postId === "bigint" ? postId : BigInt(postId);
+    const postIdHex = num.toHex(normalizedPostId);
+    const result = await provider.callContract({
+      contractAddress: voteAddress,
+      entrypoint: "get_votes",
+      calldata: [postIdHex]
+    });
+
+    const up = BigInt(Array.isArray(result) ? (result[0] ?? 0) : 0);
+    const down = BigInt(Array.isArray(result) ? (result[1] ?? 0) : 0);
+    return { up, down };
+  }
+
   return {
     provider,
     account,
     canPost,
     register,
     createPost,
-    getPostCount
+    getPostCount,
+    vote,
+    getVotes
   };
 }
-

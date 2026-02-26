@@ -6,11 +6,11 @@
   "scripts": {
     "status": "node ./scripts/status.mjs",
     "register": "node ./scripts/register.mjs",
-    "autopost": "node ./scripts/auto-post.mjs"
+    "autopost": "node ./scripts/auto-post.mjs",
+    "vote": "node ./scripts/vote.mjs"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
     "starknet": "^8.9.2"
   }
 }
-

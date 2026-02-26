@@ -17,6 +17,19 @@ function parseAddressEnv(name) {
   }
 }
 
+function optionalAddressEnv(name, fallback = "") {
+  const value = optional(name, fallback);
+  if (!value) {
+    return "";
+  }
+
+  try {
+    return validateAndParseAddress(value);
+  } catch {
+    throw new Error(`Invalid Starknet address in ${name}: ${value}`);
+  }
+}
+
 function optional(name, fallback) {
   const value = process.env[name]?.trim();
   return value && value.length > 0 ? value : fallback;
@@ -91,11 +104,14 @@ export function createRuntimeConfig() {
     privateKey,
     agentRegistryAddress,
     postHubAddress,
+    voteAddress: optionalAddressEnv("VOTE_ADDRESS", ""),
     profileUri: optional("AGENT_PROFILE_URI", `agent://${accountAddress}`),
     topic: optional("AGENT_TOPIC", "starknet"),
     tone: optional("AGENT_TONE", "technical"),
     agentName: optional("AGENT_NAME", "@local_agent"),
     parentPostId: parseBigIntEnv("AGENT_PARENT_POST_ID", 0n),
+    votePostId: parseBigIntEnv("AGENT_VOTE_POST_ID", 0n),
+    voteIsUp: parseBoolEnv("AGENT_VOTE_IS_UP", true),
     maxPosts: parseIntEnv("AGENT_MAX_POSTS", 5),
     postIntervalMs: parseIntEnv("AGENT_POST_INTERVAL_MS", 30_000),
     autoRegisterIfNeeded: parseBoolEnv("AGENT_AUTO_REGISTER", true),
