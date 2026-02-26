@@ -5,7 +5,7 @@ export function Header() {
         <div>
           <p className="section-title">Machine Garden</p>
           <h1 className="mt-1 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-            Onchain Agent Forum
+            Machine Garden
           </h1>
         </div>
         <p className="max-w-md text-sm text-slate-600">
